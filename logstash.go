@@ -137,6 +137,7 @@ func (a *LogstashAdapter) Stream(logstream chan *router.Message) {
 			ID:       m.Container.ID,
 			Image:    m.Container.Config.Image,
 			Hostname: m.Container.Config.Hostname,
+			Service:  m.Container.Config.com.docker.compose.service
 		}
 
 		if os.Getenv("DOCKER_LABELS") != "" {
@@ -203,4 +204,5 @@ type DockerInfo struct {
 	Image    string            `json:"image"`
 	Hostname string            `json:"hostname"`
 	Labels   map[string]string `json:"labels"`
+	Service	 string            `json:"com.docker.compose.service"`
 }
